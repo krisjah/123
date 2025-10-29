@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguins Walking in Lockstep</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 50%, #FFFFFF 100%);
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            padding: 20px;
+            color: #2c3e50;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to bottom, #FFFFFF 0%, #E8F4F8 100%);
+            border-top: 3px solid #B0E0E6;
+        }
+
+        .penguin-container {
+            position: absolute;
+            bottom: 200px;
+            left: -150px;
+            animation: march 15s linear infinite;
+        }
+
+        @keyframes march {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        .penguin {
+            position: relative;
+            display: inline-block;
+            margin: 0 30px;
+            animation: waddle 0.6s ease-in-out infinite;
+        }
+
+        .penguin:nth-child(2) { animation-delay: 0s; }
+        .penguin:nth-child(3) { animation-delay: 0s; }
+        .penguin:nth-child(4) { animation-delay: 0s; }
+        .penguin:nth-child(5) { animation-delay: 0s; }
+
+        @keyframes waddle {
+            0%, 100% { transform: rotate(0deg) translateY(0px); }
+            25% { transform: rotate(-5deg) translateY(-5px); }
+            75% { transform: rotate(5deg) translateY(-5px); }
+        }
+
+        .penguin-body {
+            width: 60px;
+            height: 80px;
+            background: #2C3E50;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .penguin-belly {
+            width: 35px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            left: 12.5px;
+        }
+
+        .penguin-head {
+            width: 50px;
+            height: 50px;
+            background: #2C3E50;
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            left: 5px;
+            z-index: 3;
+        }
+
+        .penguin-face {
+            width: 30px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 12px;
+            left: 10px;
+        }
+
+        .eye {
+            width: 8px;
+            height: 8px;
+            background: #2C3E50;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+        }
+
+        .eye-left { left: 6px; }
+        .eye-right { right: 6px; }
+
+        .beak {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 10px solid #FFA500;
+            position: absolute;
+            top: 18px;
+            left: 9px;
+        }
+
+        .wing {
+            width: 20px;
+            height: 40px;
+            background: #34495E;
+            border-radius: 50%;
+            position: absolute;
+            top: 25px;
+            animation: flap 0.6s ease-in-out infinite;
+        }
+
+        .wing-left {
+            left: -8px;
+            transform-origin: right center;
+        }
+
+        .wing-right {
+            right: -8px;
+            transform-origin: left center;
+        }
+
+        @keyframes flap {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(-20deg); }
+        }
+
+        .foot {
+            width: 18px;
+            height: 8px;
+            background: #FFA500;
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            bottom: -8px;
+            animation: step 0.6s ease-in-out infinite;
+        }
+
+        .foot-left {
+            left: 8px;
+        }
+
+        .foot-right {
+            right: 8px;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes step {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .snow {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(100vh); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="title">Penguins Walking in Lockstep</h1>
+
+    <div class="penguin-container">
+        <div class="penguin">
+            <div class="penguin-head">
+                <div class="penguin-face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="beak"></div>
+                </div>
+            </div>
+            <div class="penguin-body">
+                <div class="penguin-belly"></div>
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="foot foot-left"></div>
+                <div class="foot foot-right"></div>
+            </div>
+        </div>
+
+        <div class="penguin">
+            <div class="penguin-head">
+                <div class="penguin-face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="beak"></div>
+                </div>
+            </div>
+            <div class="penguin-body">
+                <div class="penguin-belly"></div>
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="foot foot-left"></div>
+                <div class="foot foot-right"></div>
+            </div>
+        </div>
+
+        <div class="penguin">
+            <div class="penguin-head">
+                <div class="penguin-face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="beak"></div>
+                </div>
+            </div>
+            <div class="penguin-body">
+                <div class="penguin-belly"></div>
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="foot foot-left"></div>
+                <div class="foot foot-right"></div>
+            </div>
+        </div>
+
+        <div class="penguin">
+            <div class="penguin-head">
+                <div class="penguin-face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="beak"></div>
+                </div>
+            </div>
+            <div class="penguin-body">
+                <div class="penguin-belly"></div>
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="foot foot-left"></div>
+                <div class="foot foot-right"></div>
+            </div>
+        </div>
+
+        <div class="penguin">
+            <div class="penguin-head">
+                <div class="penguin-face">
+                    <div class="eye eye-left"></div>
+                    <div class="eye eye-right"></div>
+                    <div class="beak"></div>
+                </div>
+            </div>
+            <div class="penguin-body">
+                <div class="penguin-belly"></div>
+                <div class="wing wing-left"></div>
+                <div class="wing wing-right"></div>
+                <div class="foot foot-left"></div>
+                <div class="foot foot-right"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ground"></div>
+
+    <script>
+        // Add some falling snow for atmosphere
+        function createSnowflake() {
+            const snow = document.createElement('div');
+            snow.className = 'snow';
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snow.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(snow);
+
+            setTimeout(() => snow.remove(), 5000);
+        }
+
+        // Create snowflakes periodically
+        setInterval(createSnowflake, 200);
+
+        // Create initial snowflakes
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createSnowflake, i * 100);
+        }
+    </script>
+</body>
+</html>
